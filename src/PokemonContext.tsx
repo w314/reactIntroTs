@@ -41,8 +41,13 @@ const PokemonProvider = ({children}: {children: React.ReactNode}) => {
     // use useEffect() to get pokemons when the component mounts
     useEffect(() => {
       fetch('./pokemons.json')
-      .then(response => response.json())
-      .then(data => setPokemons(data))
+        // fetch returns a promise, that resolves with the response object
+        // the response is the representation of the entire HTTP response
+        // the json() method returns a second promise 
+        // that parses the HTTP body text as JSON 
+        .then(response => response.json())
+        // use the data recived to set Pokemom
+        .then(data => setPokemons(data))
     }, [])
 
     // return children wrapped in the provider
